@@ -1,6 +1,5 @@
 # ROS2 Jazzy Docker Development Environment (For MacOS) 
 
-A Docker-based development environment for ROS2 Jazzy with GUI support.
 
 ## 🚀 Quick Start
 
