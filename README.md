@@ -79,5 +79,3 @@ Foxglove Bridge is installed and ready to use. To launch it, run:
 ```bash
 foxglove
 ```
-
-*PS: It's kinda hard to get rviz2 to work because stange GUI issues, so we use foxglove for visualization.*
