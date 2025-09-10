@@ -1,0 +1,51 @@
+services:
+  ros2-dev:
+    build: .
+    container_name: ros2-jazzy-dev
+    stdin_open: true
+    tty: true
+    
+    # Port forwarding
+    ports:
+      - "5900:5900"  # VNC port
+      - "8765:8765"  # Foxglove Studio port
+    
+    # X11 Forwarding for GUI applications
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - XAUTHORITY=/tmp/.docker.xauth
+    
+    volumes:
+      # X11 forwarding
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /tmp/.docker.xauth:/tmp/.docker.xauth:rw
+      
+      # Persistent workspace (modify path as needed)
+      - ./ros2_workspace:/home/ros/ros2_ws:rw
+      
+      # Optional: mount your source code directory
+      - ./src:/home/ros/ros2_ws/src:rw
+      
+      # Optional: persistent home directory for config files
+      - ./ros2_home:/home/ros/.ros:rw
+      
+      # Optional: share host's .bashrc customizations
+      # - ./bashrc_custom:/home/ros/.bashrc_custom:ro
+    
+    # Capabilities for hardware access (if needed)
+    cap_add:
+      - SYS_PTRACE
+    
+    # Device access (uncomment if you need camera, lidar, etc.)
+    # devices:
+    #   - /dev/video0:/dev/video0
+    #   - /dev/ttyUSB0:/dev/ttyUSB0
+    #   - /dev/ttyACM0:/dev/ttyACM0
+    
+    
+    # Restart policy - automatically restart if stopped
+    restart: unless-stopped
+    
+    # Keep container running even if no processes are attached
+    init: true
