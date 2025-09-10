@@ -1,6 +1,6 @@
 # ROS2 Jazzy Docker Development Environment (For MacOS) 
 
-A persistent Docker-based development environment for ROS2 Jazzy with GUI support.
+A Docker-based development environment for ROS2 Jazzy with GUI support.
 
 ## 🚀 Quick Start
 
@@ -10,7 +10,7 @@ A persistent Docker-based development environment for ROS2 Jazzy with GUI suppor
 ```
 This creates your persistent container and all necessary directories.
 
-### Daily Workflow
+### Starting
 ```bash
 # Connect to your container (starts automatically if stopped)
 ./manage.sh warp      # Recommended for Warp terminal users
@@ -20,10 +20,6 @@ This creates your persistent container and all necessary directories.
 # When done working, optionally stop the container
 ./manage.sh stop
 ```
-
-## 📦 Container Management
-
-The container is **persistent** - it keeps running in the background and retains all your work between sessions.
 
 ### Management Commands
 ```bash
